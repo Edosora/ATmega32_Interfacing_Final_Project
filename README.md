@@ -34,15 +34,7 @@ A digital countdown timer built on the **ATmega32** microcontroller. The user en
 
 ## How It Works
 
-1. **Setup** – type the time on the keypad; the LCD echoes each digit into the `HH : MM : SS` slots. Each pair is validated, and an invalid pair resets to `__`.
-2. **Countdown** – press `=` to start. Timer1 runs in **CTC mode** and raises an interrupt every **1 second** (31250 ticks at 8 MHz with a prescaler of 256). The 7-segment displays count down SS -> MM -> HH.
-3. **Alarm** – at `00:00:00` the buzzer beeps and the LCD shows `TIME UP!`.
-
-
-## Timing Calculation
-
-```
-tick time  = prescaler / f_CPU = 256 / 8 MHz = 32 us
-counts     = 1 s / 32 us = 31,250  ->  OCR1A = 31250
-```
+1. **Setup** : type the time on the keypad; the LCD echoes each digit into the `HH : MM : SS` slots. Each pair is validated, and an invalid pair resets to `__`.
+2. **Countdown** : press `=` to start. Timer1 runs in **CTC mode** and raises an interrupt every **1 second** (31250 ticks at 8 MHz with a prescaler of 256). The 7-segment displays count down SS -> MM -> HH.
+3. **Alarm** : at `00:00:00` the buzzer beeps and the LCD shows `TIME UP!`.
 
