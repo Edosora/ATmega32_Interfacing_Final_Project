@@ -1,0 +1,19 @@
+# Eclipse build artifacts
+Debug/
+Release/
+
+# Common generated files
+*.o
+*.d
+*.elf
+*.hex
+*.map
+*.lss
+*.eep
+*.lst
+*.su
+
+# Eclipse project metadata (can be recreated)
+.settings/
+.metadata/
+bin/
