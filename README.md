@@ -8,7 +8,6 @@ A digital countdown timer built on the **ATmega32** microcontroller. The user en
 - LCD used for input only (shows the entered time while typing)
 - Six 7-segment displays show the live countdown
 - Buzzer alarm + `TIME UP!` message when the timer ends
-- Optional hardware reset button on the RESET pin
 
 ## Hardware Requirements
 
@@ -39,25 +38,6 @@ A digital countdown timer built on the **ATmega32** microcontroller. The user en
 2. **Countdown** – press `=` to start. Timer1 runs in **CTC mode** and raises an interrupt every **1 second** (31250 ticks at 8 MHz with a prescaler of 256). The 7-segment displays count down SS -> MM -> HH.
 3. **Alarm** – at `00:00:00` the buzzer beeps and the LCD shows `TIME UP!`.
 
-## Project Structure
-
-The code follows a layered architecture:
-
-```
-.
-├── APP/            # main.c - application logic (state machine)
-├── HAL/            # chip drivers
-│   ├── H7SEG/      # 7-segment multiplexed driver
-│   ├── HBuzzer/    # buzzer driver
-│   ├── HKP/        # keypad driver
-│   └── HLCD/       # LCD driver
-├── MCAL/           # register-level drivers
-│   ├── MDIO/       # digital I/O driver
-│   └── MTimer1/    # Timer1 driver (CTC mode)
-└── LIB/            # common types and macros
-    ├── BitMath.h   # bit manipulation macros
-    └── StdTypes.h  # standard type definitions
-```
 
 ## Timing Calculation
 
@@ -66,14 +46,3 @@ tick time  = prescaler / f_CPU = 256 / 8 MHz = 32 us
 counts     = 1 s / 32 us = 31,250  ->  OCR1A = 31250
 ```
 
-## Getting Started
-
-1. Clone this repository.
-2. Open the project in **Eclipse** (AVR plugin installed).
-3. Make sure the ATmega32 is configured for an 8 MHz clock.
-4. Build and flash the generated `.hex`, or load it into **Proteus** for simulation.
-5. The `.pdsprj` Proteus schematic is not included in this repo.
-
-## License
-
-This is a student learning project.
